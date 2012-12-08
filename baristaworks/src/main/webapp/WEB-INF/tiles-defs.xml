@@ -14,13 +14,16 @@
 	</definition>
 
 	<definition name="*/*" extends="base">
-		<put-attribute name="contents" value="/WEB-INF/views/contents/{1}/{2}.jsp" />
+		<put-attribute name="contents" value="/WEB-INF/views/{1}/{2}.jsp" />
+		<put-attribute name="active" value="{1}" /> <!-- sidebar에서 사용 -->
 	</definition>
 	<definition name="*/*/*" extends="base">
-		<put-attribute name="contents" value="/WEB-INF/views/contents/{1}/{2}/{3}.jsp" />
+		<put-attribute name="contents" value="/WEB-INF/views/{1}/{2}/{3}.jsp" />
+    <put-attribute name="active" value="{2}" />
 	</definition>
 	<definition name="*/*/*/*" extends="base">
-		<put-attribute name="contents" value="/WEB-INF/views/contents/{1}/{2}/{3}/{4}.jsp" />
+		<put-attribute name="contents" value="/WEB-INF/views/{1}/{2}/{3}/{4}.jsp" />
+    <put-attribute name="active" value="{3}" />
 	</definition>
 
 </tiles-definitions>

@@ -53,13 +53,13 @@
 
     <div class="container-fluid">
       <div class="row-fluid">
-        <div class="span3">
+        <div class="span2">
           <div class="well sidebar-nav">
             <tiles:insertAttribute name="sidebar"/>
           </div><!--/.well -->
         </div><!--/span-->
         
-        <div class="span9">
+        <div class="span10">
         	<tiles:insertAttribute name="contents"/>
         </div><!--/span-->
       </div><!--/row-->
@@ -89,5 +89,8 @@
     <script src="<c:url value='/resources/bootstrap/2.2.1/js/bootstrap-carousel.js' />"></script>
     <script src="<c:url value='/resources/bootstrap/2.2.1/js/bootstrap-typeahead.js' />"></script>
 
+    <script>
+    alert(">>> <tiles:getAsString name='active' ignore='true' />");
+    </script>
   </body>
 </html>
