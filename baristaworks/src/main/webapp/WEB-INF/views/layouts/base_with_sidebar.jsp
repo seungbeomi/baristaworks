@@ -53,9 +53,18 @@
       </div>
     </div>
 
-    <div class="container">
-
-     	<tiles:insertAttribute name="contents"/>
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span2">
+          <div class="well sidebar-nav">
+            <tiles:insertAttribute name="sidebar"/>
+          </div><!--/.well -->
+        </div><!--/span-->
+        
+        <div class="span10">
+        	<tiles:insertAttribute name="contents"/>
+        </div><!--/span-->
+      </div><!--/row-->
 
       <hr>
 

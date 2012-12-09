@@ -1,4 +1,4 @@
-package kr.co.baristaworks.orm.hibernate;
+package kr.co.baristaworks.contents.orm.hibernate;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
