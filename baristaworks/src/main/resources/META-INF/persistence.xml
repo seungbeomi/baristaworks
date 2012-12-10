@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<persistence xmlns="http://java.sun.com/xml/ns/persistence"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
-	version="1.0">
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+  version="2.0">
 
-	<persistence-unit name="jpa-h2" transaction-type="RESOURCE_LOCAL">
-		<provider>org.hibernate.ejb.HibernatePersistence</provider>
-		<class>kr.co.baristaworks.contents.orm.jpa.User</class>
-    <exclude-unlisted-classes/>
+  <!-- 데이터베이스 설정 -->
+
+  <!-- ==================================================== -->
+  <!-- H2 ================================================= -->
+  <!-- ==================================================== -->
+	<persistence-unit name="jpa-h2">
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
 			<property name="hibernate.connection.driver_class" value="org.h2.Driver" />
@@ -15,18 +16,20 @@
 			<property name="hibernate.connection.username" value="sa" />
 			<property name="hibernate.connection.password" value="" />
 			<property name="hibernate.hbm2ddl.auto"  value="create-drop" />
+      <!--  
 			<property name="hibernate.connection.autocommit" value="true" />
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="true" />
 			<property name="hibernate.use_sql_comments" value="true" /> 
 			<property name="hibernate.pool_size" value="5" />
+      -->
 		</properties>
 	</persistence-unit>
 	
-	<persistence-unit name="jpa-postgresql" transaction-type="RESOURCE_LOCAL">
-		<provider>org.hibernate.ejb.HibernatePersistence</provider>
-		<class>kr.co.baristaworks.contents.orm.jpa.User</class>
-    <exclude-unlisted-classes/>
+  <!-- ==================================================== -->
+  <!-- P O S T G R E S Q L ================================ -->
+  <!-- ==================================================== -->
+	<persistence-unit name="jpa-postgresql">
 		<properties>
 			<property name="hibernate.ejb.autodetection" value="class"/>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" /> 
@@ -34,13 +37,15 @@
 			<property name="hibernate.connection.url" value="jdbc:postgresql://localhost:5432/test" />
 			<property name="hibernate.connection.username" value="postgres" />
 			<property name="hibernate.connection.password" value="postgres" />
-			<property name="hibernate.pool_size" value="5" />
 			<property name="hibernate.hbm2ddl.auto"  value="create-drop" />
+      <!--  
+			<property name="hibernate.pool_size" value="5" />
 			<property name="hibernate.connection.autocommit" value="true" />
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="true" />
 			<property name="hibernate.use_sql_comments" value="true" />
+      -->
 		</properties>
 	</persistence-unit>
-
+  
 </persistence>
