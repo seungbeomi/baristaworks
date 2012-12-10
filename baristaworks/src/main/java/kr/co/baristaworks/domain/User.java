@@ -1,4 +1,4 @@
-package kr.co.baristaworks.contents.orm.jpa;
+package kr.co.baristaworks.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,6 +17,8 @@ public class User extends AbstractPersistable<Long>{
 
 	@Column(unique = true, length=20)
 	private String username;
+	private String firstname;
+	private String lastname;
 	
 	public User() {
 		this(null);

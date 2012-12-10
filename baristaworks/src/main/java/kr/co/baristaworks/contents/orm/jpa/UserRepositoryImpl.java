@@ -6,6 +6,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.CriteriaQuery;
 
+import kr.co.baristaworks.domain.User;
+
 public class UserRepositoryImpl implements UserRepositoryCustom {
 
 	@PersistenceContext

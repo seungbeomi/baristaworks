@@ -65,7 +65,7 @@
 		<hibernate-validator-version>4.2.0.Final</hibernate-validator-version>
 		<validation-api-version>1.0.0.GA</validation-api-version>
 		<jackson-mapper-asl-version>1.6.4</jackson-mapper-asl-version>
-		<joda-time-version>1.6</joda-time-version>
+		<joda-time-version>2.1</joda-time-version>
 		<freemarker-version>2.3.19</freemarker-version>
 		<portlet-api-version>1.0</portlet-api-version>
 
@@ -112,6 +112,11 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
+			<version>${springframework-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aspects</artifactId>
 			<version>${springframework-version}</version>
 		</dependency>
 		<dependency>
@@ -341,6 +346,12 @@
 			<groupId>javax.portlet</groupId>
 			<artifactId>portlet-api</artifactId>
 			<version>${portlet-api-version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+			<version>${joda-time-version}</version>
 		</dependency>
 
 	</dependencies>

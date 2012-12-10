@@ -2,6 +2,8 @@ package kr.co.baristaworks.contents.orm.jpa;
 
 import java.util.List;
 
+import kr.co.baristaworks.domain.User;
+
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
