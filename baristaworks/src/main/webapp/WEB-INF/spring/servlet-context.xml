@@ -20,7 +20,7 @@
 	<mvc:resources mapping="/resources/**" location="/resources/" />
 
 	<mvc:interceptors>
-		<!-- <bean class="com.bpa.mbl.cm.interceptor.RequestViewInterceptor" /> -->
+		<bean class="kr.co.baristaworks.core.web.RequestViewInterceptor" />
 		<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" p:paramName="locale" />
 	</mvc:interceptors>
 
@@ -36,12 +36,12 @@
 		the application.properties resource bundle localizes all application specific 
 		messages such as entity names and menu items. -->
 	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource"
-		p:basenames="classpath:/WEB-INF/i18n/application, classpath:/WEB-INF/i18n/messages"
+		p:basenames="/WEB-INF/i18n/application, /WEB-INF/i18n/messages"
 		p:fallbackToSystemLocale="false" />
 
 	<!-- store preferred language configuration in a cookie -->
 	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver"
-		p:cookieName="locale" />
+		p:cookieName="locale" p:defaultLocale="ko" />
 
 	<!-- This bean resolves specific types of exceptions to corresponding logical 
 		- view names for error views. The default behaviour of DispatcherServlet 
@@ -84,7 +84,7 @@
 		<property name="mappings">
 			<bean class="org.springframework.beans.factory.config.PropertiesFactoryBean">
 				<property name="location">
-					<value>/WEB-INF/views/mapping.properties</value>
+					<value>/WEB-INF/mapping.properties</value>
 				</property>
 			</bean>
 		</property>

@@ -5,6 +5,15 @@
 
 <tiles-definitions>
 
+	<definition name="base" template="/WEB-INF/views/layouts/base_with_sidebar.jsp">
+		<put-attribute name="title" value="baristaworks" />
+		<put-attribute name="header" expression="/WEB-INF/views/shared/header.jsp" />
+		<put-attribute name="sidebar" value="/WEB-INF/views/shared/sidebar.jsp" />
+		<put-attribute name="contents" value="/WEB-INF/views/shared/contents.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/views/shared/footer.jsp" />
+	</definition>
+
+	<!--  
 	<definition name="base" template="/WEB-INF/views/layouts/base.jsp">
 		<put-attribute name="title" value="baristaworks" />
 		<put-attribute name="header" expression="/WEB-INF/views/shared/header.jsp" />
@@ -14,20 +23,21 @@
 	<definition name="base_with_sidebar" extends="base" template="/WEB-INF/views/layouts/base_with_sidebar.jsp">
 		<put-attribute name="sidebar" value="/WEB-INF/views/shared/sidebar.jsp" />
 	</definition>
-
+	-->
+	
 	<definition name="*/*" extends="base">
 		<put-attribute name="title" value="baristaworks :: {1}" />
-		<put-attribute name="contents" value="/WEB-INF/views/contents/{1}/{2}.jsp" />
+		<put-attribute name="contents" value="/WEB-INF/views/{1}/{2}.jsp" />
 		<put-attribute name="active" value="{1}" /> <!-- sidebar에서 사용 -->
 	</definition>
 	<definition name="*/*/*" extends="base">
 		<put-attribute name="title" value="baristaworks :: {2}" />
-		<put-attribute name="contents" value="/WEB-INF/views/contents/{1}/{2}/{3}.jsp" />
+		<put-attribute name="contents" value="/WEB-INF/views/{1}/{2}/{3}.jsp" />
     <put-attribute name="active" value="{2}" />
 	</definition>
 	<definition name="*/*/*/*" extends="base">
 		<put-attribute name="title" value="baristaworks :: {3}" />
-		<put-attribute name="contents" value="/WEB-INF/views/contents/{1}/{2}/{3}/{4}.jsp" />
+		<put-attribute name="contents" value="/WEB-INF/views/{1}/{2}/{3}/{4}.jsp" />
     <put-attribute name="active" value="{3}" />
 	</definition>
 

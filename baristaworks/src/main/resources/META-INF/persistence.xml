@@ -8,7 +8,8 @@
   <!-- ==================================================== -->
   <!-- H2 ================================================= -->
   <!-- ==================================================== -->
-	<persistence-unit name="jpa-h2">
+	<!-- <persistence-unit name="UNIT-H2">
+		<class>kr.co.baristaworks.domain.User</class>
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
 			<property name="hibernate.connection.driver_class" value="org.h2.Driver" />
@@ -16,20 +17,18 @@
 			<property name="hibernate.connection.username" value="sa" />
 			<property name="hibernate.connection.password" value="" />
 			<property name="hibernate.hbm2ddl.auto"  value="create-drop" />
-      <!--  
 			<property name="hibernate.connection.autocommit" value="true" />
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="true" />
 			<property name="hibernate.use_sql_comments" value="true" /> 
 			<property name="hibernate.pool_size" value="5" />
-      -->
 		</properties>
-	</persistence-unit>
+	</persistence-unit> -->
 	
   <!-- ==================================================== -->
   <!-- P O S T G R E S Q L ================================ -->
   <!-- ==================================================== -->
-	<persistence-unit name="jpa-postgresql">
+	<!-- <persistence-unit name="UNIT-POSTGRESQL">
 		<properties>
 			<property name="hibernate.ejb.autodetection" value="class"/>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" /> 
@@ -38,13 +37,31 @@
 			<property name="hibernate.connection.username" value="postgres" />
 			<property name="hibernate.connection.password" value="postgres" />
 			<property name="hibernate.hbm2ddl.auto"  value="create-drop" />
-      <!--  
 			<property name="hibernate.pool_size" value="5" />
 			<property name="hibernate.connection.autocommit" value="true" />
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="true" />
 			<property name="hibernate.use_sql_comments" value="true" />
-      -->
+		</properties>
+	</persistence-unit> -->
+	
+  <!-- ==================================================== -->
+  <!-- M Y S Q L ========================================== -->
+  <!-- ==================================================== -->
+	<persistence-unit name="UNIT-MYSQL">
+		<properties>
+			<property name="hibernate.ejb.autodetection" value="class"/>
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect" /> 
+			<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
+			<property name="hibernate.connection.url" value="jdbc:mysql:/localhost:3306/test?useUnicode=true&amp;characterEncoding=UTF-8" />
+			<property name="hibernate.connection.username" value="root" />
+			<property name="hibernate.connection.password" value="mysql" />
+			<property name="hibernate.hbm2ddl.auto"  value="create-drop" />
+			<property name="hibernate.pool_size" value="5" />
+			<property name="hibernate.connection.autocommit" value="true" />
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="true" />
+			<property name="hibernate.use_sql_comments" value="true" />
 		</properties>
 	</persistence-unit>
   
