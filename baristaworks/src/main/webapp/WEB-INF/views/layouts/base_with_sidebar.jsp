@@ -62,7 +62,7 @@
         </div><!--/span-->
         
         <div class="span10">
-        	<tiles:insertAttribute name="contents"/>
+        	<tiles:insertAttribute name="body"/>
         </div><!--/span-->
       </div><!--/row-->
 

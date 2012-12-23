@@ -42,6 +42,15 @@
 	<!-- store preferred language configuration in a cookie -->
 	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver"
 		p:cookieName="locale" p:defaultLocale="ko" />
+		
+		
+	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+		<property name="customArgumentResolvers">
+			<list>
+				<bean class="org.springframework.data.web.PageableArgumentResolver" />
+			</list>
+		</property>
+	</bean>
 
 	<!-- This bean resolves specific types of exceptions to corresponding logical 
 		- view names for error views. The default behaviour of DispatcherServlet 
@@ -78,13 +87,16 @@
 	
 	<bean id="jsonView" class="org.springframework.web.servlet.view.json.MappingJacksonJsonView" />
 	
-	<bean id="urlFilenameViewController" class="org.springframework.web.servlet.mvc.UrlFilenameViewController"/>
+	<bean id="parameterizableViewController" class="org.springframework.web.servlet.mvc.ParameterizableViewController">
+		<property name="viewName" value="comingSoon"/>
+	</bean>
 	
+	<bean id="urlFilenameViewController" class="org.springframework.web.servlet.mvc.UrlFilenameViewController"/>
 	<bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
 		<property name="mappings">
 			<bean class="org.springframework.beans.factory.config.PropertiesFactoryBean">
 				<property name="location">
-					<value>/WEB-INF/mapping.properties</value>
+					<value>/WEB-INF/url-mapping.properties</value>
 				</property>
 			</bean>
 		</property>

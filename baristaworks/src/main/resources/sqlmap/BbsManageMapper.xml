@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.baristaworks.contents.egov.bbs.BbsManageMapper">
+
+  <cache />
+  
+  <resultMap type="BbsManageVO" id="BbsManageResult">
+  	<result property="bbsId" column="BBS_ID" />
+  	<result property="bbsTyCode" column="BBS_TY_CODE" />
+  	<result property="bbsTyCodeNm" column="BBS_TY_CODE_NM" />
+  	<result property="bbsAttrbCode" column="BBS_ATTRB_CODE" />
+  	<result property="bbsAttrbCodeNm" column="BBS_ATTRB_CODE_NM" />
+  	<result property="bbsNm" column="BBS_NM" />
+  	<result property="tmplatId" column="TMPLAT_ID" />
+  	<result property="useAt" column="USE_AT" />
+  	<result property="frstRegistPnttm" column="FRST_REGIST_PNTTM" />
+  </resultMap>
+
+  <select id="selectBbsManageList" resultMap="BbsManageResult" >
+  	/* BbsManageMapper.findAll */
+    SELECT 
+			a.BBS_ID, 
+			a.BBS_TY_CODE, 
+			b.CODE_NM as BBS_TY_CODE_NM, 
+			a.BBS_ATTRB_CODE, 
+			c.CODE_NM as BBS_ATTRB_CODE_NM, 
+			a.BBS_NM, 
+			a.TMPLAT_ID, 
+			a.USE_AT, 
+			DATE_FORMAT(a.FRST_REGIST_PNTTM, '%Y-%m-%d') as FRST_REGIST_PNTTM 
+		FROM BBSMANAGE a 
+		LEFT OUTER JOIN 
+			(SELECT CODE_ID, CODE, CODE_NM 
+			 FROM COMTCCMMNDETAILCODE 
+			 WHERE CODE_ID = 'COM004' AND USE_AT='Y') b 
+		ON a.BBS_TY_CODE = b.CODE 
+		LEFT OUTER JOIN 
+			(SELECT CODE_ID, CODE, CODE_NM 
+			 FROM COMTCCMMNDETAILCODE 
+			 WHERE CODE_ID = 'COM009' 
+			 AND USE_AT='Y') c 
+		ON a.BBS_ATTRB_CODE = c.CODE 
+		WHERE 1=1 
+		ORDER BY a.FRST_REGIST_PNTTM DESC 
+		LIMIT 10 OFFSET 0 
+  </select>
+
+</mapper>

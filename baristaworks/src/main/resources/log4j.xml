@@ -7,41 +7,55 @@
 		<param name="Target" value="System.out" />
 		<layout class="org.apache.log4j.PatternLayout">
 			<!-- <param name="ConversionPattern" value="%-5p: %c - %m%n" /> -->
-			<!-- <param name="ConversionPattern" value="[%-5p] (%13F:%L)%M() - %m%n" /> -->
-			<param name="ConversionPattern" value="[%-5p] %m%n" />
+			<param name="ConversionPattern" value="[%-5p] (%13F:%L)%M() - %m%n" />
+			<!-- <param name="ConversionPattern" value="[%-5p] %m%n" /> -->
 		</layout>
 	</appender>
-	
+
 	<!-- Application Loggers -->
 	<logger name="kr.co.baristaworks">
 		<level value="debug" />
 	</logger>
-	
+
 	<!-- 3rdparty Loggers -->
 	<logger name="org.springframework">
-		<level value="info" />
-	</logger> 
+		<level value="warn" />
+	</logger>
 	<logger name="org.springframework.web.servlet">
 		<level value="debug" />
-	</logger> 
-	
+	</logger>
+
 	<logger name="org.hibernate">
 		<level value="warn" />
-	</logger>  
-	<!-- <logger name="org.hibernate.SQL">
+	</logger>
+	<!-- <logger name="org.hibernate.SQL"> <level value="debug" /> </logger> <logger name="org.hibernate.type"> <level value="debug" /> </logger> <logger name="org.hibernate.connection.DriverManagerConnectionProvider"> 
+		<level value="debug" /> </logger> -->
+
+	<!-- JDBC[S] -->
+	<logger name="java.sql.Connection">
 		<level value="debug" />
 	</logger>
-	<logger name="org.hibernate.type">
+	<logger name="java.sql.PreparedStatement">
 		<level value="debug" />
 	</logger>
-	<logger name="org.hibernate.connection.DriverManagerConnectionProvider">
+	<logger name="java.sql.ResultSet">
 		<level value="debug" />
-	</logger> -->
-	
+	</logger>
+	<logger name="jdbc.sqlonly">
+		<level value="debug" />
+	</logger>
+	<logger name="jdbc.resultsettable">
+		<level value="debug" />
+	</logger>
+	<logger name="org.mybatis">
+		<level value="debug" />
+	</logger>
+	<!-- JDBC[E] -->
+
 	<!-- Root Logger -->
 	<root>
-		<priority value="debug" />
+		<priority value="warn" />
 		<appender-ref ref="console" />
 	</root>
-	
+
 </log4j:configuration>

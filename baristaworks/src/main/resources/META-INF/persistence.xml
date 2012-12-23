@@ -8,8 +8,8 @@
   <!-- ==================================================== -->
   <!-- H2 ================================================= -->
   <!-- ==================================================== -->
-	<!-- <persistence-unit name="UNIT-H2">
-		<class>kr.co.baristaworks.domain.User</class>
+	<!--  
+	<persistence-unit name="UNIT-H2" transaction-type="RESOURCE_LOCAL">
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
 			<property name="hibernate.connection.driver_class" value="org.h2.Driver" />
@@ -23,12 +23,14 @@
 			<property name="hibernate.use_sql_comments" value="true" /> 
 			<property name="hibernate.pool_size" value="5" />
 		</properties>
-	</persistence-unit> -->
+	</persistence-unit>
+	-->
 	
   <!-- ==================================================== -->
   <!-- P O S T G R E S Q L ================================ -->
   <!-- ==================================================== -->
-	<!-- <persistence-unit name="UNIT-POSTGRESQL">
+  <!--  
+	<persistence-unit name="UNIT-POSTGRESQL" transaction-type="RESOURCE_LOCAL">
 		<properties>
 			<property name="hibernate.ejb.autodetection" value="class"/>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" /> 
@@ -43,26 +45,33 @@
 			<property name="hibernate.format_sql" value="true" />
 			<property name="hibernate.use_sql_comments" value="true" />
 		</properties>
-	</persistence-unit> -->
+	</persistence-unit>
+  -->
 	
   <!-- ==================================================== -->
   <!-- M Y S Q L ========================================== -->
   <!-- ==================================================== -->
-	<persistence-unit name="UNIT-MYSQL">
+  <persistence-unit name="UNIT-MYSQL" transaction-type="RESOURCE_LOCAL" />
+  
+  <!--  
+	<persistence-unit name="UNIT-MYSQL" transaction-type="RESOURCE_LOCAL">
+		<mapping-file>META-INF/_orm.xml</mapping-file>
 		<properties>
 			<property name="hibernate.ejb.autodetection" value="class"/>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect" /> 
 			<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
 			<property name="hibernate.connection.url" value="jdbc:mysql:/localhost:3306/test?useUnicode=true&amp;characterEncoding=UTF-8" />
 			<property name="hibernate.connection.username" value="root" />
-			<property name="hibernate.connection.password" value="mysql" />
+			<property name="hibernate.connection.password" value="oracle" />
 			<property name="hibernate.hbm2ddl.auto"  value="create-drop" />
 			<property name="hibernate.pool_size" value="5" />
 			<property name="hibernate.connection.autocommit" value="true" />
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="true" />
 			<property name="hibernate.use_sql_comments" value="true" />
+			<property name="hibernate.current_session_context_class">thread</property>
 		</properties>
 	</persistence-unit>
+  -->
   
 </persistence>

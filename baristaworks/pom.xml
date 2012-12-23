@@ -12,11 +12,10 @@
 	<!-- ==================================================== -->
 	<properties>
 		<java-version>1.6</java-version>
-		
+
 		<!-- spring -->
 		<springframework-version>3.1.1.RELEASE</springframework-version>
 		<spring-data-jpa-version>1.1.0.RELEASE</spring-data-jpa-version>
-		<spring-data-jpa-version>1.0.3.RELEASE</spring-data-jpa-version>
 
 		<!-- commons -->
 		<commons-attributes-api-version>2.1</commons-attributes-api-version>
@@ -30,7 +29,7 @@
 		<commons-io-version>2.0</commons-io-version>
 
 		<!-- persistence -->
-		<ojdbc6-version>11.2.0.2.0</ojdbc6-version>
+		<ojdbc-version>14</ojdbc-version>
 		<postgresql-version>9.1-901.jdbc4</postgresql-version>
 		<h2-version>1.3.156</h2-version>
 		<ibatis-version>2.3.4.726</ibatis-version>
@@ -39,6 +38,8 @@
 		<hibernate-version>4.1.4.Final</hibernate-version>
 		<hibernate-jpa-2.0-api-version>1.0.0.Final</hibernate-jpa-2.0-api-version>
 		<egov-data-hibernate-version>0.1.0-SNAPSHOT</egov-data-hibernate-version>
+		<mybatis-version>3.1.1</mybatis-version>
+		<mybatis-spring-version>1.1.1</mybatis-spring-version>
 
 		<!-- web -->
 		<jsp-api-version>2.1</jsp-api-version>
@@ -54,13 +55,13 @@
 		<log4j-version>1.2.17</log4j-version>
 		<slf4j-version>1.6.1</slf4j-version>
 		<log4jdbc3-version>1.2.1</log4jdbc3-version>
-		<log4jdbc-remix-version>0.2.4</log4jdbc-remix-version>
+		<log4jdbc-remix-version>0.2.6</log4jdbc-remix-version>
 		<logback-version>1.0.6</logback-version>
 
 		<aspectj-maven-plugin-version>1.3</aspectj-maven-plugin-version>
 		<aspectjweaver-version>1.6.9</aspectjweaver-version>
 		<org.aspectj-version>1.6.10</org.aspectj-version>
-		
+
 		<cglib-version>2.2</cglib-version>
 		<quartz-all-version>1.6.1</quartz-all-version>
 		<lombok-version>0.11.0</lombok-version>
@@ -221,7 +222,7 @@
 		<dependency>
 			<groupId>org.lazyluke</groupId>
 			<artifactId>log4jdbc-remix</artifactId>
-			<version>${log4jdbc-remix-version}</version>
+			<version>${log4jdbc-remix-version}</version> 
 		</dependency>
 
 		<!-- @Inject -->
@@ -284,9 +285,21 @@
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
-			<groupId>com.oracle</groupId>
-			<artifactId>ojdbc6</artifactId>
-			<version>${ojdbc6-version}</version>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+			<version>${mybatis-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis-spring</artifactId>
+			<version>${mybatis-spring-version}</version>
+		</dependency>
+				
+		<!-- database driver -->
+		<dependency>
+			<groupId>ojdbc</groupId>
+			<artifactId>ojdbc</artifactId>
+			<version>${ojdbc-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>postgresql</groupId>
@@ -422,6 +435,63 @@
 					<mainClass>org.test.int1.Main</mainClass>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<configuration>
+					<downloadSources>true</downloadSources>
+					<downloadJavadocs>true</downloadJavadocs>
+				</configuration>
+			</plugin>
+			
+			<!-- mvn hibernate3:hbm2ddl -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>hibernate3-maven-plugin</artifactId>
+				<version>2.2</version>
+				<configuration>
+					<componentProperties>
+						<drop>true</drop>
+						<update>true</update>
+						<create>true</create>
+						<format>true</format>
+						<export>false</export> <!-- DB반영 -->
+						<jdk5>true</jdk5>
+						<propertyfile>src/test/resources/hibernate.properties</propertyfile>
+						<configurationfile>/src/test/resources/hibernate.cfg.xml</configurationfile>
+						<outputfilename>schema.sql</outputfilename>
+					</componentProperties>
+					<components>
+						<component>
+							<name>hbm2ddl</name>
+							<!-- <implementation>configuration</implementation> -->
+							<implementation>annotationconfiguration</implementation>
+						</component>
+					</components>
+				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>postgresql</groupId>
+						<artifactId>postgresql</artifactId>
+						<version>${postgresql-version}</version>
+					</dependency>
+					<dependency>
+						<groupId>com.h2database</groupId>
+						<artifactId>h2</artifactId>
+						<version>${h2-version}</version>
+					</dependency>
+					<dependency>
+						<groupId>ojdbc</groupId>
+						<artifactId>ojdbc</artifactId>
+						<version>${ojdbc-version}</version>
+					</dependency>
+					<dependency>
+						<groupId>mysql</groupId>
+						<artifactId>mysql-connector-java</artifactId>
+						<version>${mysql-connector-java-version}</version>
+					</dependency>
+				</dependencies>
+			</plugin>
 		</plugins>
 	</build>
 
@@ -430,6 +500,11 @@
 			<id>repository.springframework.maven.release</id>
 			<name>Spring Framework Maven Release Repository</name>
 			<url>http://repo.springsource.org/libs-release</url>
+		</repository>
+		<repository>
+			<id>spring-snapshot</id>
+			<name>Spring Maven SNAPSHOT Repository</name>
+			<url>http://repo.springsource.org/libs-snapshot</url>
 		</repository>
 	</repositories>
 

@@ -4,9 +4,8 @@
 <a class="brand" href="<c:url value='/' />"><spring:message code="application_name" /></a>
 <div class="nav-collapse collapse">
   
-	<ul class="nav">
-
-		<li class="active"><a href="<c:url value='/' />">Home</a></li>
+	<%-- 
+  <ul class="nav">
 
 		<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><spring:message code='label_java' /><b class="caret"></b></a>
 			<ul class="dropdown-menu">
@@ -35,25 +34,22 @@
 				<li><a href="<c:url value='/egov/bbs' />" data-active="bbs"><spring:message code='label_egov_bbs' /></a></li>
 			</ul>
 		</li>
-
-	</ul>
   
-  <a href="<c:url value="/login/signin"/>" class="btn btn-primary pull-right">Login</a> 
+	</ul> 
+  --%>
   
-  <!--  
   <sec:authorize access="!isAuthenticated()">
-    <form class="navbar-form pull-right" action="<c:url value='j_spring_security_check'/>" method="post">
-      <input class="span2" type="text" name="j_username" placeholder="Email" /> 
-      <input class="span2" type="password" name="j_password" placeholder="Password" />
-      <button type="submit" class="btn">Sign in</button>
-    </form>
-  </sec:authorize>
-  -->
-  <sec:authorize access="isAuthenticated()">
-    <p class="navbar-text pull-right">
-      Logged in as <a href="/j_spring_security_logout" class="navbar-link"><sec:authentication property="principal.username"/></a>
-    </p>
+    <a href="<c:url value="/login/signin"/>" class="btn btn-primary pull-right">Login</a> 
   </sec:authorize>
   
+  <sec:authorize access="isAuthenticated()">
+      <li class="nav pull-right dropdown"><a href="#" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Logged in as <sec:authentication property="principal.username"/><b class="caret"></b></a>
+        <ul class="dropdown-menu"> 
+          <li><a href="<c:url value='/admin/index' />">Secure page</a></li>
+          <li><a href="<c:url value='/admin/extreme/index' />">Extremely secure page</a></li>
+          <li><a href="<c:url value='/j_spring_security_logout' />">Log out</a></li>
+        </ul>
+      </li>
+  </sec:authorize>
 </div>
 <!--/.nav-collapse -->

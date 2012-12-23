@@ -55,7 +55,7 @@
 
     <div class="container">
 
-     	<tiles:insertAttribute name="contents"/>
+     	<tiles:insertAttribute name="body"/>
 
       <hr>
 

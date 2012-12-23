@@ -1,14 +1,22 @@
 package kr.co.baristaworks.domain;
 
 import java.io.Serializable;
-import javax.persistence.*;
 import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import lombok.Data;
 
 
 /**
  * The persistent class for the comtccmmncode database table.
  * 
  */
+@Data
 @Entity
 public class Comtccmmncode implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -44,78 +52,6 @@ public class Comtccmmncode implements Serializable {
 	private String useAt;
 
 	public Comtccmmncode() {
-	}
-
-	public String getCodeId() {
-		return this.codeId;
-	}
-
-	public void setCodeId(String codeId) {
-		this.codeId = codeId;
-	}
-
-	public String getClCode() {
-		return this.clCode;
-	}
-
-	public void setClCode(String clCode) {
-		this.clCode = clCode;
-	}
-
-	public String getCodeIdDc() {
-		return this.codeIdDc;
-	}
-
-	public void setCodeIdDc(String codeIdDc) {
-		this.codeIdDc = codeIdDc;
-	}
-
-	public String getCodeIdNm() {
-		return this.codeIdNm;
-	}
-
-	public void setCodeIdNm(String codeIdNm) {
-		this.codeIdNm = codeIdNm;
-	}
-
-	public Date getFrstRegistPnttm() {
-		return this.frstRegistPnttm;
-	}
-
-	public void setFrstRegistPnttm(Date frstRegistPnttm) {
-		this.frstRegistPnttm = frstRegistPnttm;
-	}
-
-	public String getFrstRegisterId() {
-		return this.frstRegisterId;
-	}
-
-	public void setFrstRegisterId(String frstRegisterId) {
-		this.frstRegisterId = frstRegisterId;
-	}
-
-	public Date getLastUpdtPnttm() {
-		return this.lastUpdtPnttm;
-	}
-
-	public void setLastUpdtPnttm(Date lastUpdtPnttm) {
-		this.lastUpdtPnttm = lastUpdtPnttm;
-	}
-
-	public String getLastUpdusrId() {
-		return this.lastUpdusrId;
-	}
-
-	public void setLastUpdusrId(String lastUpdusrId) {
-		this.lastUpdusrId = lastUpdusrId;
-	}
-
-	public String getUseAt() {
-		return this.useAt;
-	}
-
-	public void setUseAt(String useAt) {
-		this.useAt = useAt;
 	}
 
 }
