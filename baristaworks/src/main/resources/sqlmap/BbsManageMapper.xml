@@ -2,11 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="kr.co.baristaworks.contents.egov.bbs.BbsManageMapper">
-
-  <cache />
+<!-- <mapper namespace="kr.co.baristaworks.contents.egov.bbs.BbsManageMapper"> -->
+<mapper namespace="BbsManageMapper">
+	
+  <!-- <cache /> -->
   
-  <resultMap type="BbsManageVO" id="BbsManageResult">
+  <resultMap id="BbsManageResult" type="BbsManageVO">
   	<result property="bbsId" column="BBS_ID" />
   	<result property="bbsTyCode" column="BBS_TY_CODE" />
   	<result property="bbsTyCodeNm" column="BBS_TY_CODE_NM" />
@@ -17,9 +18,18 @@
   	<result property="useAt" column="USE_AT" />
   	<result property="frstRegistPnttm" column="FRST_REGIST_PNTTM" />
   </resultMap>
+  <resultMap id="BbsManageDetailResult" type="BbsManageVO" extends="BbsManageResult">
+  	<result property="bbsIntrcn" column="BBS_INTRCN" />
+  	<result property="fileAtchPosblAt" column="FILE_ATCH_POSBL_AT" />
+  	<result property="atchPosblFileNumber" column="ATCH_POSBL_FILE_NUMBER" />
+  	<result property="atchPosblFileSize" column="ATCH_POSBL_FILE_SIZE" />
+  	<result property="replyPosblAt" column="REPLY_POSBL_AT" />
+  	<result property="frstRegisterId" column="FRST_REGISTER_ID" />
+  	<result property="useAt" column="USE_AT" />
+  </resultMap>
 
   <select id="selectBbsManageList" resultMap="BbsManageResult" >
-  	/* BbsManageMapper.findAll */
+  	/* BbsManageMapper.selectBbsManageList */
     SELECT 
 			a.BBS_ID, 
 			a.BBS_TY_CODE, 
@@ -45,6 +55,63 @@
 		WHERE 1=1 
 		ORDER BY a.FRST_REGIST_PNTTM DESC 
 		LIMIT 10 OFFSET 0 
+  </select>
+  
+  <insert id="insertBbsManage" parameterType="BbsManage" keyProperty="bbsId" keyColumn="BBS_ID">
+  	/* BbsManageMapper.insertBbsManage */
+  	INSERT INTO BBSMANAGE
+		(BBS_ID, BBS_TY_CODE, BBS_ATTRB_CODE, BBS_NM, BBS_INTRCN, 
+		 REPLY_POSBL_AT, FILE_ATCH_POSBL_AT, ATCH_POSBL_FILE_NUMBER,
+		 ATCH_POSBL_FILE_SIZE, TMPLAT_ID, USE_AT,
+		 FRST_REGISTER_ID, FRST_REGIST_PNTTM )
+		VALUES
+		( #{bbsId}, #{bbsTyCode}, #{bbsAttrbCode}, #{bbsNm}, #{bbsIntrcn}, 
+		  #{replyPosblAt}, #{fileAtchPosblAt}, #{atchPosblFileNumber}, 
+		  #{atchPosblFileSize}, #{tmplatId}, #{useAt}, #{frstRegisterId}, SYSDATE()
+		 )
+		 <selectKey resultType="long" keyProperty="bbsId" order="AFTER">
+		 	SELECT #{bbsId} AS BBS_ID FROM DUAL
+		 </selectKey>
+  </insert>
+  
+  <select id="selectBbsManage" parameterType="long" resultMap="BbsManageDetailResult">
+  	/* BbsManageMapper.selectBbsManage */
+    SELECT 
+				a.BBS_ID, 
+				a.BBS_TY_CODE, 
+				b.CODE_NM as BBS_TY_CODE_NM, 
+				a.BBS_INTRCN, 
+				a.BBS_ATTRB_CODE, 
+				c.CODE_NM as BBS_ATTRB_CODE_NM, 
+				a.BBS_NM, 
+				a.TMPLAT_ID, 
+				/* d.TMPLAT_NM, d.TMPLAT_COURS, */ 
+				a.FILE_ATCH_POSBL_AT, 
+				a.ATCH_POSBL_FILE_NUMBER,
+				a.ATCH_POSBL_FILE_SIZE, 
+				a.REPLY_POSBL_AT, 
+				a.FRST_REGISTER_ID, 
+				/*  e.USER_NM as FRST_REGISTER_NM,*/
+				a.USE_AT, 
+				DATE_FORMAT(a.FRST_REGIST_PNTTM, '%Y-%m-%d') as FRST_REGIST_PNTTM,				
+				(
+					SELECT IFNULL(USE_AT,'N') 
+					FROM   BBSUSE 
+					WHERE  BBS_ID = #{ bbsId } 
+					/* AND TRGET_ID IN (#uniqId#, 'SYSTEM_DEFAULT_BOARD') */
+				) as AUTH_FLAG
+			FROM BBSMANAGE a
+			LEFT OUTER JOIN 
+				(SELECT CODE_ID, CODE, CODE_NM FROM COMTCCMMNDETAILCODE WHERE CODE_ID = 'COM004' AND USE_AT='Y') b
+				ON a.BBS_TY_CODE = b.CODE
+			LEFT OUTER JOIN 
+				(SELECT CODE_ID, CODE, CODE_NM FROM COMTCCMMNDETAILCODE WHERE CODE_ID = 'COM009' AND USE_AT='Y') c
+				ON a.BBS_ATTRB_CODE = c.CODE
+			/* LEFT OUTER JOIN COMTNTMPLATINFO d
+				ON a.TMPLAT_ID = d.TMPLAT_ID 
+			LEFT OUTER JOIN COMVNUSERMASTER e
+				ON a.FRST_REGISTER_ID = e.ESNTL_ID */				
+			WHERE a.BBS_ID = #{bbsId}
   </select>
 
 </mapper>

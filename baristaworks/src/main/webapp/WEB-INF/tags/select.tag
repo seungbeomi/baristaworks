@@ -5,6 +5,7 @@
 <%@ attribute name="items" type="java.util.List" %>
 <%@ attribute name="begin" %>
 <%@ attribute name="end" %>
+<%@ attribute name="value" %>
 
 <div class="control-group">
   <label class="control-label" for="${ path }">${ label }</label>
@@ -12,8 +13,16 @@
     <%-- items를 사용하지 않는 경우 --%>
     <c:if test="${ empty items }">
       <form:select path="${ path }">
+        <form:option value="0" label="-- ${ label } --" /> 
         <c:forEach var="i" begin="${ begin }" end="${ end }" step="1" >
-          <form:option value="${ i }">${ i }</form:option>
+          <c:choose>
+            <c:when test="${ value eq i }">
+              <option value="${ i }" selected="selected">${ i }</option>
+            </c:when>
+            <c:otherwise>
+              <option value="${ i }">${ i }</option>
+            </c:otherwise>
+          </c:choose>
         </c:forEach>
       </form:select>
     </c:if>

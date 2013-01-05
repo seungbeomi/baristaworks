@@ -36,6 +36,8 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<c:url value='/resources/bootstrap/2.2.2/ico/apple-touch-icon-114-precomposed.png'/>">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<c:url value='/resources/bootstrap/2.2.2/ico/apple-touch-icon-72-precomposed.png'/>">
     <link rel="apple-touch-icon-precomposed" href="<c:url value='/resources/bootstrap/2.2.2/ico/apple-touch-icon-57-precomposed.png'/>">
+    
+    <script src="<c:url value='/resources/jquery/1.8.3/jquery-1.8.3.min.js' />"></script>
   </head>
 
   <body>
@@ -53,9 +55,18 @@
       </div>
     </div>
 
-    <div class="container">
-
-     	<tiles:insertAttribute name="body"/>
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span2">
+          <div class="well sidebar-nav">
+            <tiles:insertAttribute name="sidebar"/>
+          </div><!--/.well -->
+        </div><!--/span-->
+        
+        <div class="span10">
+        	<tiles:insertAttribute name="body"/>
+        </div><!--/span-->
+      </div><!--/row-->
 
       <hr>
 
@@ -69,7 +80,7 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
-    <script src="<c:url value='/resources/jquery/1.8.3/jquery-1.8.3.min.js' />"></script>
+    <%-- <script src="<c:url value='/resources/jquery/1.8.3/jquery-1.8.3.min.js' />"></script> --%>
     <script src="<c:url value='/resources/bootstrap/2.2.2/js/bootstrap-transition.js' />"></script>
     <script src="<c:url value='/resources/bootstrap/2.2.2/js/bootstrap-alert.js' />"></script>
     <script src="<c:url value='/resources/bootstrap/2.2.2/js/bootstrap-modal.js' />"></script>

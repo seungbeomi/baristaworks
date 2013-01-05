@@ -1,35 +1,33 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE tiles-definitions PUBLIC 
-	"-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" 
-	"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
 
 <tiles-definitions>
 
-	<definition name="base" template="/WEB-INF/views/layouts/base_with_sidebar.jsp">
+	<definition name="default" template="/WEB-INF/layouts/default.jsp">
 		<put-attribute name="title" value="baristaworks" />
 		<put-attribute name="header" expression="/WEB-INF/views/shared/header.jsp" />
 		<put-attribute name="sidebar" value="/WEB-INF/views/shared/sidebar.jsp" />
-		<put-attribute name="body" value="/WEB-INF/views/shared/body.jsp" />
+		<!-- <put-attribute name="body" value="/WEB-INF/views/shared/body.jsp" /> -->
 		<put-attribute name="footer" value="/WEB-INF/views/shared/footer.jsp" />
 	</definition>
 
-	<definition name="simple" template="/WEB-INF/views/layouts/base.jsp">
+	<definition name="simple" template="/WEB-INF/layouts/simple.jsp">
 		<put-attribute name="title" value="baristaworks" />
 		<put-attribute name="header" expression="/WEB-INF/views/shared/header.jsp" />
-		<put-attribute name="body" value="/WEB-INF/views/shared/body.jsp" />
+		<!-- <put-attribute name="body" value="/WEB-INF/views/shared/body.jsp" /> -->
 		<put-attribute name="footer" value="/WEB-INF/views/shared/footer.jsp" />
 	</definition>
 	
+	<!--  
 	<definition name="login/*" extends="simple">
 		<put-attribute name="title" value="{1}" />
 		<put-attribute name="body" value="/WEB-INF/views/login/{1}.jsp" />
-		<put-attribute name="active" value="{1}" /> <!-- sidebar에서 사용 -->
+		<put-attribute name="active" value="{1}" />
 	</definition>
-	
 	<definition name="*/*" extends="base">
 		<put-attribute name="title" value="baristaworks :: {1}" />
 		<put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp" />
-		<put-attribute name="active" value="{1}" /> <!-- sidebar에서 사용 -->
+		<put-attribute name="active" value="{1}" />
 	</definition>
 	<definition name="*/*/*" extends="base">
 		<put-attribute name="title" value="baristaworks :: {2}" />
@@ -41,5 +39,6 @@
 		<put-attribute name="body" value="/WEB-INF/views/{1}/{2}/{3}/{4}.jsp" />
     <put-attribute name="active" value="{3}" />
 	</definition>
+	-->
 
 </tiles-definitions>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+
+	<definition extends="simple" name="login/signin">
+		<put-attribute name="body" value="/WEB-INF/views/login/signin.jsp" />
+	</definition>
+	<definition extends="simple" name="login/signout">
+		<put-attribute name="body" value="/WEB-INF/views/login/signout.jsp" />
+	</definition>
+	<definition extends="simple" name="login/timeout">
+		<put-attribute name="body" value="/WEB-INF/views/login/timeout.jsp" />
+	</definition>
+	
+</tiles-definitions>

@@ -15,6 +15,8 @@ import javax.persistence.TemporalType;
 
 import lombok.Data;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 
 /**
  * The persistent class for the comtnbbsmaster database table.
@@ -52,6 +54,7 @@ public class BbsManage implements Serializable {
 	private String bbsIntrcn;
 
 	@Column(name="BBS_NM")
+	@NotEmpty
 	private String bbsNm;
 
 	@Column(name="BBS_TY_CODE")

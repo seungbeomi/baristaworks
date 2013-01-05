@@ -28,16 +28,23 @@
 	<!-- ==================================================== -->
 	<!-- S Q L  S E S S I O N =============================== -->
 	<!-- ==================================================== -->
-	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+	<bean id="simpleSqlSession" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg index="0" ref="sqlSessionFactory" />
+		<constructor-arg index="1" value="SIMPLE" />
+	</bean>
+	<bean id="batchSqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg index="0" ref="sqlSessionFactory" />
+		<constructor-arg index="1" value="BATCH" />
 	</bean>
 	
 	<!-- ==================================================== -->
 	<!-- M A P P E R   S C A N N E R ======================== -->
 	<!-- ==================================================== -->
+	<!--  
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="kr.co.baristaworks" />
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
 	</bean>
+	-->
 	
 </beans>

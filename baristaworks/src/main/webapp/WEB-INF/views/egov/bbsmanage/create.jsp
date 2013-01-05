@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/shared/taglibs.jsp"%>
 
-<b:form label="게시판정보수정">
+<b:form label="게시판정보등록" commandName="bbsManage">
   <b:input label="게시판명" path="bbsNm" />
   <b:textarea label="게시판소개" path="bbsIntrcn" />
   <b:select label="게시판유형" path="bbsTyCode" items="${ typeList }" />
