@@ -113,5 +113,11 @@
 				ON a.FRST_REGISTER_ID = e.ESNTL_ID */				
 			WHERE a.BBS_ID = #{bbsId}
   </select>
+  
+  <select id="deleteBbsManage" parameterType="long">
+  	/* BbsManageMapper.deleteBbsManage */
+  	DELETE FROM BBSMANAGE
+  	WHERE  BBS_ID = #{ bbsId }
+  </select>
 
 </mapper>

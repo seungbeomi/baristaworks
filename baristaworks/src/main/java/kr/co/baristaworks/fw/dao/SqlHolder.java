@@ -6,23 +6,26 @@ import lombok.Data;
 public class SqlHolder {
 
   /**
-   * Query Id
+   * Sql Id
    */
-  private String queryId;
+  private String sqlId;
   
   /**
    * Query의 파라미터 
    */
-  private Object paramObject;
+  private Object param;
+  
+  /** 디폴트생성자 */
+  public SqlHolder() {}
   
   /**
    * 생성자
-   * @param queryId QueryId
-   * @param paramObject Query의 파라미터
+   * @param sqlId Sql Id
+   * @param param Query의 파라미터
    */
-  public SqlHolder(String queryId, Object paramObject) {
-    this.queryId = queryId;
-    this.paramObject = paramObject;
+  public SqlHolder(String sqlId, Object param) {
+    this.sqlId = sqlId;
+    this.param = param;
   }
   
 }

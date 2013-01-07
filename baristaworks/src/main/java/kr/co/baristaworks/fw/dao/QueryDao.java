@@ -176,17 +176,7 @@ public interface QueryDao {
    * @return Connection
    */
   Connection getConnection();
-
-  /*
-  <E> E queryForObject(String sqlID, Object bindParams, Class clazz);
-  Map<String, Object> queryForMap(String sqlID, Object bindParams);
-  <E> E[] queryForObjectArray(String sqlID, Object bindParams, Class clazz);
-  Map<String, Object>[] queryForMapArray(String sqlID, Object bindParams);
-  <E> E[] queryForObjectArray(String sqlID, Object bindParams, Class clazz, int beginIndex, int maxCount);
-  Map<String, Object>[] queryForMapArray(String sqlID, Object bindParams, int beginIndex, int maxCount);
-  <E> List<E> queryForObjectList(String sqlID, Object bindParams);
-  List<Map<String, Object>> queryForMapList(String sqlID, Object bindParams);
-  <E> List<E> queryForObjectList(String sqlID, Object bindParams, int beginIndex, int maxCount);
-  List<Map<String, Object>> queryForMapList(String sqlID, Object bindParams, int beginIndex, int maxCount);
-  */
+  
+  int execute(List<SqlHolder> sqlHolders);
+  
 }

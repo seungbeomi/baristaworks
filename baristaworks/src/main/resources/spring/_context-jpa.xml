@@ -9,7 +9,7 @@
 
 	<util:properties id="application" location="classpath:application.properties" />
 	<!-- spring-data-jpa -->
-	<jpa:repositories base-package="kr.co.baristaworks"/>
+	<jpa:repositories base-package="kr.co.baristaworks"/> 
 
 	<!-- ==================================================== -->
 	<!-- J P A ============================================== -->

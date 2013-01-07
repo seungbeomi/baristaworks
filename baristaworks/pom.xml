@@ -50,6 +50,9 @@
 
 		<!-- test -->
 		<junit-version>4.7</junit-version>
+		<unitils-version>3.3</unitils-version>
+		<!-- <hibernate-core-version>4.1.7.Final</hibernate-core-version> -->
+		<hibernate-core-version>3.6.0.Final</hibernate-core-version>
 
 		<!-- log -->
 		<log4j-version>1.2.17</log4j-version>
@@ -59,10 +62,11 @@
 		<logback-version>1.0.6</logback-version>
 
 		<aspectj-maven-plugin-version>1.3</aspectj-maven-plugin-version>
-		<aspectjweaver-version>1.6.9</aspectjweaver-version>
-		<org.aspectj-version>1.6.10</org.aspectj-version>
+		<aspectjweaver-version>1.6.11</aspectjweaver-version>
+		<aspectjrt-version>1.6.10</aspectjrt-version>
+		<aopalliance-version>1.0</aopalliance-version>
 
-		<cglib-version>2.2</cglib-version>
+		<cglib-version>2.2.2</cglib-version>
 		<quartz-all-version>1.6.1</quartz-all-version>
 		<lombok-version>0.11.0</lombok-version>
 		<hibernate-validator-version>4.2.0.Final</hibernate-validator-version>
@@ -169,7 +173,17 @@
 		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjrt</artifactId>
-			<version>${org.aspectj-version}</version>
+			<version>${aspectjrt-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>${aspectjweaver-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>aopalliance</groupId>
+			<artifactId>aopalliance</artifactId>
+			<version>${aopalliance-version}</version>
 		</dependency>
 
 		<!-- Logging -->
@@ -222,7 +236,7 @@
 		<dependency>
 			<groupId>org.lazyluke</groupId>
 			<artifactId>log4jdbc-remix</artifactId>
-			<version>${log4jdbc-remix-version}</version> 
+			<version>${log4jdbc-remix-version}</version>
 		</dependency>
 
 		<!-- @Inject -->
@@ -258,6 +272,78 @@
 			<version>${junit-version}</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.unitils</groupId>
+			<artifactId>unitils-core</artifactId>
+			<version>${unitils-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.unitils</groupId>
+			<artifactId>unitils-spring</artifactId>
+			<version>${unitils-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.unitils</groupId>
+			<artifactId>unitils-database</artifactId>
+			<version>${unitils-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.unitils</groupId>
+			<artifactId>unitils-dbmaintainer</artifactId>
+			<version>${unitils-version}</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>slf4j-nop</artifactId>
+					<groupId>org.slf4j</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.unitils</groupId>
+			<artifactId>unitils-dbunit</artifactId>
+			<version>${unitils-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.unitils</groupId>
+			<artifactId>unitils-inject</artifactId>
+			<version>${unitils-version}</version>
+		</dependency>
+		<!-- <dependency> <groupId>org.unitils</groupId> <artifactId>unitils-io</artifactId> <version>${unitils-version}</version> </dependency> -->
+		<dependency>
+			<groupId>org.unitils</groupId>
+			<artifactId>unitils-orm</artifactId>
+			<version>${unitils-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.unitils</groupId>
+			<artifactId>unitils-testng</artifactId>
+			<version>${unitils-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.unitils</groupId>
+			<artifactId>unitils-easymock</artifactId>
+			<version>${unitils-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate</artifactId>
+			<version>3.2.5.ga</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>3.3.1.ga</version>
+		</dependency>
+		<dependency>
+			<groupId>concurrent</groupId>
+			<artifactId>concurrent</artifactId>
+			<version>1.3.4</version>
+		</dependency>
+		<dependency>
+			<groupId>asm</groupId>
+			<artifactId>asm</artifactId>
+			<version>3.3.1</version>
+		</dependency>
 
 		<!-- validation -->
 		<dependency>
@@ -273,17 +359,8 @@
 		</dependency>
 
 		<!-- persistence -->
-		<dependency>
-			<groupId>org.hibernate.javax.persistence</groupId>
-			<artifactId>hibernate-jpa-2.0-api</artifactId>
-			<version>${hibernate-jpa-2.0-api-version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-entitymanager</artifactId>
-			<version>${hibernate-version}</version>
-			<scope>runtime</scope>
-		</dependency>
+		<!-- <dependency> <groupId>org.hibernate.javax.persistence</groupId> <artifactId>hibernate-jpa-2.0-api</artifactId> <version>${hibernate-jpa-2.0-api-version}</version> </dependency> <dependency> <groupId>org.hibernate</groupId> 
+			<artifactId>hibernate-entitymanager</artifactId> <version>${hibernate-version}</version> <scope>runtime</scope> </dependency> -->
 		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis</artifactId>
@@ -294,7 +371,7 @@
 			<artifactId>mybatis-spring</artifactId>
 			<version>${mybatis-spring-version}</version>
 		</dependency>
-				
+
 		<!-- database driver -->
 		<dependency>
 			<groupId>ojdbc</groupId>
@@ -344,6 +421,11 @@
 		<dependency>
 			<groupId>cglib</groupId>
 			<artifactId>cglib</artifactId>
+			<version>${cglib-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib-nodep</artifactId>
 			<version>${cglib-version}</version>
 		</dependency>
 
@@ -400,6 +482,23 @@
 	<!-- B U I L D ========================================== -->
 	<!-- ==================================================== -->
 	<build>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+		</resources>
+		<testResources>
+			<testResource>
+				<directory>src/main/resources</directory>
+			</testResource>
+			<testResource>
+				<directory>src/test/resources</directory>
+			</testResource>
+			<testResource>
+				<directory>DATASET</directory> 
+			</testResource>
+		</testResources>
+
 		<plugins>
 			<plugin>
 				<artifactId>maven-eclipse-plugin</artifactId>
@@ -443,7 +542,7 @@
 					<downloadJavadocs>true</downloadJavadocs>
 				</configuration>
 			</plugin>
-			
+
 			<!-- mvn hibernate3:hbm2ddl -->
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>

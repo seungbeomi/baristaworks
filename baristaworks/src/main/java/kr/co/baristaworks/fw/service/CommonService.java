@@ -1,5 +1,6 @@
 package kr.co.baristaworks.fw.service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import kr.co.baristaworks.domain.CommonCodeDetail;
@@ -19,7 +20,10 @@ public class CommonService {
     return queryDao.selectList("CommonMapper.selectCommonCodeDetail", commonCodeVO);
   }
   public Long selectNextId(String tableName) {
-    return queryDao.selectOne("CommonMapper.selectNextId", tableName);
+    Object result = queryDao.selectOne("CommonMapper.selectNextId", tableName);
+    Long nextId = ((BigDecimal) result).longValue();
+    queryDao.update("CommonMapper.updateNextId", tableName);
+    return nextId;
   }
 /*
   @Autowired

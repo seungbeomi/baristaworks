@@ -22,7 +22,7 @@ public class BbsManageDaoTest {
   @Test
   public void testSchemaExport() {
     Configuration config = new Configuration();
-    config.addAnnotatedClass(BbsManage.class);
+    //config.addAnnotatedClass(BbsManage.class);
     config.configure("hibernate.cfg.xml");  // hibernate.cfg.xml
     
     new SchemaExport(config).create(true, false);
