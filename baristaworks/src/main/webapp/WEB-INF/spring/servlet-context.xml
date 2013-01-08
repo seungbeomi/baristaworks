@@ -21,7 +21,8 @@
 	<mvc:resources mapping="/resources/**" location="/resources/" />
 
 	<mvc:interceptors>
-		<bean class="kr.co.baristaworks.fw.web.RequestViewInterceptor" />
+		<bean class="kr.co.baristaworks.fw.web.interceptor.LoggingHandlerMethodInterceptor" />
+		<bean class="kr.co.baristaworks.fw.web.interceptor.RequestViewInterceptor" />
 		<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" p:paramName="locale" />
 	</mvc:interceptors>
 

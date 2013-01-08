@@ -1,4 +1,4 @@
-package kr.co.baristaworks.fw.web;
+package kr.co.baristaworks.fw.web.interceptor;
 
 import java.util.Enumeration;
 
