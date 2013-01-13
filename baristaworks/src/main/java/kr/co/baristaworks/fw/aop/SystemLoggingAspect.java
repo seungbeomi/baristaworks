@@ -1,15 +1,16 @@
 package kr.co.baristaworks.fw.aop;
 
+import kr.co.baristaworks.fw.log.Logger;
+
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.Signature;
 import org.aspectj.lang.reflect.MethodSignature;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.util.StopWatch;
 
 public class SystemLoggingAspect {
 
-  private static final Logger log = LoggerFactory.getLogger(SystemLoggingAspect.class);
+  //private static final Logger log = LoggerFactory.getLogger(SystemLoggingAspect.class);
+  private static final Logger log = Logger.getLogger(SystemLoggingAspect.class);
 
   /**
    * Controller 로그출력
@@ -25,19 +26,19 @@ public class SystemLoggingAspect {
       String clazzName = joinPoint.getTarget().getClass().getSimpleName();
       String methodName = signature.getName();
       String target = clazzName + "." + methodName;
-      log.debug("Begin controller : {}", target);
+      log.debug("1. Begin controller : {}", target);
       for (Object arg : joinPoint.getArgs()) {
         log.debug("Parmas : {}", arg.toString());
       }
       stopWatch.start();
       Object result = joinPoint.proceed();
-      log.debug("End controller : {}", target);
+      log.debug("1. End controller : {}", target);
       return result;
     } catch (Throwable e) {
       throw e;
     } finally {
       stopWatch.stop();
-      log.debug("Process time : {} seconds", stopWatch.getTotalTimeSeconds());
+      log.debug("1. Process time : {} seconds", stopWatch.getTotalTimeSeconds());
     }
   }
 
@@ -55,19 +56,19 @@ public class SystemLoggingAspect {
       String clazzName = joinPoint.getTarget().getClass().getSimpleName();
       String methodName = signature.getName();
       String target = clazzName + "." + methodName;
-      log.debug("Begin service : {}", target);
+      log.debug("2. Begin service : {}", target);
       for (Object arg : joinPoint.getArgs()) {
         log.debug("Parmas : {}", arg.toString());
       }
       stopWatch.start();
       Object result = joinPoint.proceed();
-      log.debug("End service : {}", target);
+      log.debug("2. End service : {}", target);
       return result;
     } catch (Throwable e) {
       throw e;
     } finally {
       stopWatch.stop();
-      log.debug("Process time : {} seconds", stopWatch.getTotalTimeSeconds());
+      log.debug("2. Process time : {} seconds", stopWatch.getTotalTimeSeconds());
     }
   }
 
@@ -85,7 +86,7 @@ public class SystemLoggingAspect {
       String clazzName = joinPoint.getTarget().getClass().getSimpleName();
       String methodName = signature.getName();
       String target = clazzName + "." + methodName;
-      log.debug("Begin dao : {}", target);
+      log.debug("3. Begin dao : {}", target);
       if (signature instanceof MethodSignature) {
         final MethodSignature ms = (MethodSignature) signature;
         final Class<?>[] parameterTypes = ms.getParameterTypes();
@@ -99,13 +100,13 @@ public class SystemLoggingAspect {
       }
       stopWatch.start();
       Object result = joinPoint.proceed();
-      log.debug("End dao : {}", target);
+      log.debug("3. End dao : {}", target);
       return result;
     } catch (Throwable e) {
       throw e;
     } finally {
       stopWatch.stop();
-      log.debug("Process time : {} seconds", stopWatch.getTotalTimeSeconds());
+      log.debug("3. Process time : {} seconds", stopWatch.getTotalTimeSeconds());
     }
   }
 

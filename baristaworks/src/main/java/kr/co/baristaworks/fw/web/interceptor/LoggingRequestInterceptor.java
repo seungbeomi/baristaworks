@@ -5,13 +5,14 @@ import java.util.Enumeration;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import kr.co.baristaworks.fw.log.Logger;
+
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 public class LoggingRequestInterceptor extends HandlerInterceptorAdapter {
 
-  Logger logger = LoggerFactory.getLogger(getClass());
+  //Logger logger = LoggerFactory.getLogger(getClass());
+  private static final Logger log = Logger.getLogger(LoggingRequestInterceptor.class);
 
   @Override
   public boolean preHandle(HttpServletRequest request,
@@ -36,9 +37,9 @@ public class LoggingRequestInterceptor extends HandlerInterceptorAdapter {
 
     if (!url.contains("/resources/")) {
       if (sb.length() == 0) {
-        logger.debug("{} : {}", method, url);
+        log.debug("{} : {}", method, url);
       } else {
-        logger.debug("{} : {}, PARAMS=[ {}]", new Object[] { method, url, sb});
+        log.debug("{} : {}, PARAMS=[ {}]", new Object[] { method, url, sb});
       }
     }
 
