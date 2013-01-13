@@ -28,7 +28,7 @@ public class SystemLoggingAspect {
       String target = clazzName + "." + methodName;
       log.debug("1. Begin controller : {}", target);
       for (Object arg : joinPoint.getArgs()) {
-        log.debug("Parmas : {}", arg.toString());
+        log.debug("1. Parmas : {}", arg.toString());
       }
       stopWatch.start();
       Object result = joinPoint.proceed();
@@ -58,7 +58,7 @@ public class SystemLoggingAspect {
       String target = clazzName + "." + methodName;
       log.debug("2. Begin service : {}", target);
       for (Object arg : joinPoint.getArgs()) {
-        log.debug("Parmas : {}", arg.toString());
+        log.debug("2. Parmas : {}", arg.toString());
       }
       stopWatch.start();
       Object result = joinPoint.proceed();
@@ -93,7 +93,7 @@ public class SystemLoggingAspect {
         for (int i = 0; i < parameterTypes.length; i++) {
           Class<?> type = parameterTypes[i];
           if ("java.lang.String".equals(type.getName())) {
-            log.debug("Sql id : {}", joinPoint.getArgs()[i]);
+            log.debug("3. Sql id : {}", joinPoint.getArgs()[i]);
             break;
           }
         }
