@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:mvc="http://www.springframework.org/schema/mvc" 
-	xmlns:p="http://www.springframework.org/schema/p"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="
-		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd     
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd     
-		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd">
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 
-	<context:component-scan base-package="kr.co.baristaworks" /> 
+	<context:component-scan base-package="kr.co.baristaworks">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service" />
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Repository" />
+	</context:component-scan>
 	
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<!-- JSR-303 support will be detected on classpath and enabled automatically -->
@@ -21,8 +22,8 @@
 	<mvc:resources mapping="/resources/**" location="/resources/" />
 
 	<mvc:interceptors>
-		<bean class="kr.co.baristaworks.fw.web.interceptor.LoggingHandlerMethodInterceptor" />
-		<bean class="kr.co.baristaworks.fw.web.interceptor.RequestViewInterceptor" />
+		<!-- <bean class="kr.co.baristaworks.fw.web.interceptor.LoggingHandlerMethodInterceptor" /> -->
+		<bean class="kr.co.baristaworks.fw.web.interceptor.LoggingRequestInterceptor" />
 		<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" p:paramName="locale" />
 	</mvc:interceptors>
 
@@ -111,5 +112,12 @@
 		<property name="suffix" value=".jsp" />
 		<property name="order" value="9"/>
 	</bean>
+	
+	<!-- AOP를 통한 Controller 로그 남기기 -->
+	<aop:config>
+		<aop:aspect id="systemLoggingAspect" ref="systemLogging">
+			<aop:around pointcut="execution(public * kr.co.baristaworks..*Controller.*(..))" method="loggingController" />
+		</aop:aspect>
+	</aop:config>
 	
 </beans>

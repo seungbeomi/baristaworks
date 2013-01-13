@@ -36,6 +36,10 @@ public class BbsManageService {
   public BbsManage selectBbsManage(String bbsId) {
     return queryDao.selectOne("BbsManageMapper.selectBbsManage", bbsId);
   }
+  
+  public int updateBbsManage(BbsManage bbsManage) {
+    return queryDao.update("BbsManageMapper.updateBbsManage", bbsManage);
+  }
   /*
   public List<BbsManageVO> selectBbsManageList() {
     return bbsManageMapper.selectBbsManageList();

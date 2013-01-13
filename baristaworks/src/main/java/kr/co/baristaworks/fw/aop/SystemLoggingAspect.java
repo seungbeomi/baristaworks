@@ -11,14 +11,27 @@ public class SystemLoggingAspect {
 
   private static final Logger log = LoggerFactory.getLogger(SystemLoggingAspect.class);
 
-  public Object loggingController(ProceedingJoinPoint joinPoint)
-      throws Throwable {
+  /**
+   * Controller 로그출력
+   * 
+   * @param joinPoint
+   * @return
+   * @throws Throwable
+   */
+  public Object loggingController(ProceedingJoinPoint joinPoint) throws Throwable {
     StopWatch stopWatch = new StopWatch();
     try {
-      log.debug("begin controller");
+      final Signature signature = joinPoint.getStaticPart().getSignature();
+      String clazzName = joinPoint.getTarget().getClass().getSimpleName();
+      String methodName = signature.getName();
+      String target = clazzName + "." + methodName;
+      log.debug("Begin controller : {}", target);
+      for (Object arg : joinPoint.getArgs()) {
+        log.debug("Parmas : {}", arg.toString());
+      }
       stopWatch.start();
       Object result = joinPoint.proceed();
-      log.debug("end controller");
+      log.debug("End controller : {}", target);
       return result;
     } catch (Throwable e) {
       throw e;
@@ -28,14 +41,20 @@ public class SystemLoggingAspect {
     }
   }
 
+  /**
+   * Service 로그 출력
+   * 
+   * @param joinPoint
+   * @return
+   * @throws Throwable
+   */
   public Object loggingService(ProceedingJoinPoint joinPoint) throws Throwable {
     StopWatch stopWatch = new StopWatch();
-    final Signature signature = joinPoint.getStaticPart().getSignature();
-    String clazzName = joinPoint.getTarget().getClass().getSimpleName();
-    String methodName = signature.getName();
-    String target = clazzName + "." + methodName;
     try {
-      
+      final Signature signature = joinPoint.getStaticPart().getSignature();
+      String clazzName = joinPoint.getTarget().getClass().getSimpleName();
+      String methodName = signature.getName();
+      String target = clazzName + "." + methodName;
       log.debug("Begin service : {}", target);
       for (Object arg : joinPoint.getArgs()) {
         log.debug("Parmas : {}", arg.toString());
@@ -62,10 +81,10 @@ public class SystemLoggingAspect {
   public Object loggingDao(ProceedingJoinPoint joinPoint) throws Throwable {
     StopWatch stopWatch = new StopWatch();
     try {
-    final Signature signature = joinPoint.getStaticPart().getSignature();
-    String clazzName = joinPoint.getTarget().getClass().getSimpleName();
-    String methodName = signature.getName();
-    String target = clazzName + "." + methodName;
+      final Signature signature = joinPoint.getStaticPart().getSignature();
+      String clazzName = joinPoint.getTarget().getClass().getSimpleName();
+      String methodName = signature.getName();
+      String target = clazzName + "." + methodName;
       log.debug("Begin dao : {}", target);
       if (signature instanceof MethodSignature) {
         final MethodSignature ms = (MethodSignature) signature;

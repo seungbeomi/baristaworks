@@ -87,7 +87,7 @@ public class BbsManageController {
 	  
 	  // Validation
 	  if (result.hasErrors()) {
-	    return "/egov/bbsmanage/create";
+	    return "egov/bbsmanage/create";
 	  }
 	  
 	  // 저장
@@ -123,6 +123,8 @@ public class BbsManageController {
       model.addAttribute("bbsManageVO", bbsManageVO);
       return "egov/bbsmanage/update";
     }
+    
+    bbsManageService.updateBbsManage(bbsManageVO);
 	  
     return "redirect:/egov/bbsmanage/" + bbsManageVO.getBbsId();
 	}

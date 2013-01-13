@@ -114,10 +114,24 @@
 			WHERE a.BBS_ID = #{bbsId}
   </select>
   
-  <select id="deleteBbsManage" parameterType="long">
+  <delete id="deleteBbsManage" parameterType="long">
   	/* BbsManageMapper.deleteBbsManage */
   	DELETE FROM BBSMANAGE
   	WHERE  BBS_ID = #{ bbsId }
-  </select>
+  </delete>
+  
+  <update id="updateBbsManage" parameterType="BbsManage">
+  	/* BbsManageMapper.updateBbsManage */
+  	UPDATE COMTNBBSMASTER 
+  	SET    BBS_NM = #{ bbsNm },
+					 BBS_INTRCN = #{ bbsIntrcn }, 
+					 FILE_ATCH_POSBL_AT = #{ fileAtchPosblAt },
+					 ATCH_POSBL_FILE_NUMBER = #{ posblAtchFileNumber },
+					 ATCH_POSBL_FILE_SIZE = #{ posblAtchFileSize },
+					 TMPLAT_ID = #{ tmplatId },		
+					 LAST_UPDUSR_ID = #{ lastUpdusrId },
+					 LAST_UPDT_PNTTM = SYSDATE()
+		WHERE  BBS_ID = #{ bbsId }
+  </update>
 
 </mapper>

@@ -1,18 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
-	xmlns:context="http://www.springframework.org/schema/context"
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 
-	<context:component-scan base-package="kr.co.baristaworks" /> 
+	<aop:aspectj-autoproxy/>
+	<!-- this switches on the load-time weaving -->
+	<context:load-time-weaver />
+	
+	<context:component-scan base-package="kr.co.baristaworks">
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+	</context:component-scan>
 
-	<!--  System Logging Aspect -->
+	<!-- System Logging Aspect -->
 	<bean id="systemLogging" class="kr.co.baristaworks.fw.aop.SystemLoggingAspect" />
 
 	<aop:config>
 		<aop:aspect id="systemLoggingAspect" ref="systemLogging">
-			<aop:around pointcut="execution(public * kr.co.baristaworks..*Controller.*(..))" method="loggingController" />
+			<!-- <aop:around pointcut="execution(public * kr.co.baristaworks..*Controller.*(..))" method="loggingController" /> -->
 			<aop:around pointcut="execution(public * kr.co.baristaworks..*Service.*(..))" method="loggingService" />
 			<aop:around pointcut="execution(public * kr.co.baristaworks..*Dao*.*(..))" method="loggingDao" />
 		</aop:aspect>

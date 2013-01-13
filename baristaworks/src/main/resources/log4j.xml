@@ -20,12 +20,22 @@
 	<!-- 3rdparty Loggers -->
 	<logger name="org.springframework">
 		<level value="warn" />
-	</logger> 
+	</logger>
 	<logger name="org.springframework.aop">
 		<level value="warn" />
 	</logger>
 	<logger name="org.springframework.web.servlet">
 		<level value="warn" />
+	</logger>
+	<logger name="org.springframework.web.servlet.DispatcherServlet">
+		<level value="debug" />
+	</logger>
+
+	<logger name="org.hibernate.validator">
+		<level value="debug" />
+	</logger>
+	<logger name="javax.validation">
+		<level value="debug" />
 	</logger>
 
 	<logger name="org.hibernate">
