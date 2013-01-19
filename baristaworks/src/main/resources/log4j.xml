@@ -13,7 +13,7 @@
 	</appender>
 
 	<!-- Application Loggers -->
-	<logger name="kr.co.baristaworks">
+	<logger name="kr.co.baristaworks" additivity="true">
 		<level value="debug" />
 	</logger>
 
@@ -22,7 +22,7 @@
 		<level value="warn" />
 	</logger>
 	<logger name="org.springframework.aop">
-		<level value="warn" />
+		<level value="debug" />
 	</logger>
 	<logger name="org.springframework.web.servlet">
 		<level value="warn" />

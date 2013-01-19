@@ -13,8 +13,6 @@ import javax.persistence.TableGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import lombok.Data;
-
 import org.hibernate.validator.constraints.NotEmpty;
 
 
@@ -22,7 +20,7 @@ import org.hibernate.validator.constraints.NotEmpty;
  * The persistent class for the comtnbbsmaster database table.
  * 
  */
-@Data
+//@Data
 @Entity
 @Table(name="BBSMANAGE")
 public class BbsManage implements Serializable {
@@ -89,4 +87,128 @@ public class BbsManage implements Serializable {
 	public BbsManage() {
 	}
 
+  public Long getBbsId() {
+    return bbsId;
+  }
+
+  public void setBbsId(Long bbsId) {
+    this.bbsId = bbsId;
+  }
+
+  public int getAtchPosblFileNumber() {
+    return atchPosblFileNumber;
+  }
+
+  public void setAtchPosblFileNumber(int atchPosblFileNumber) {
+    this.atchPosblFileNumber = atchPosblFileNumber;
+  }
+
+  public int getAtchPosblFileSize() {
+    return atchPosblFileSize;
+  }
+
+  public void setAtchPosblFileSize(int atchPosblFileSize) {
+    this.atchPosblFileSize = atchPosblFileSize;
+  }
+
+  public String getBbsAttrbCode() {
+    return bbsAttrbCode;
+  }
+
+  public void setBbsAttrbCode(String bbsAttrbCode) {
+    this.bbsAttrbCode = bbsAttrbCode;
+  }
+
+  public String getBbsIntrcn() {
+    return bbsIntrcn;
+  }
+
+  public void setBbsIntrcn(String bbsIntrcn) {
+    this.bbsIntrcn = bbsIntrcn;
+  }
+
+  public String getBbsNm() {
+    return bbsNm;
+  }
+
+  public void setBbsNm(String bbsNm) {
+    this.bbsNm = bbsNm;
+  }
+
+  public String getBbsTyCode() {
+    return bbsTyCode;
+  }
+
+  public void setBbsTyCode(String bbsTyCode) {
+    this.bbsTyCode = bbsTyCode;
+  }
+
+  public String getFileAtchPosblAt() {
+    return fileAtchPosblAt;
+  }
+
+  public void setFileAtchPosblAt(String fileAtchPosblAt) {
+    this.fileAtchPosblAt = fileAtchPosblAt;
+  }
+
+  public Date getFrstRegistPnttm() {
+    return frstRegistPnttm;
+  }
+
+  public void setFrstRegistPnttm(Date frstRegistPnttm) {
+    this.frstRegistPnttm = frstRegistPnttm;
+  }
+
+  public String getFrstRegisterId() {
+    return frstRegisterId;
+  }
+
+  public void setFrstRegisterId(String frstRegisterId) {
+    this.frstRegisterId = frstRegisterId;
+  }
+
+  public Date getLastUpdtPnttm() {
+    return lastUpdtPnttm;
+  }
+
+  public void setLastUpdtPnttm(Date lastUpdtPnttm) {
+    this.lastUpdtPnttm = lastUpdtPnttm;
+  }
+
+  public String getLastUpdusrId() {
+    return lastUpdusrId;
+  }
+
+  public void setLastUpdusrId(String lastUpdusrId) {
+    this.lastUpdusrId = lastUpdusrId;
+  }
+
+  public String getReplyPosblAt() {
+    return replyPosblAt;
+  }
+
+  public void setReplyPosblAt(String replyPosblAt) {
+    this.replyPosblAt = replyPosblAt;
+  }
+
+  public String getTmplatId() {
+    return tmplatId;
+  }
+
+  public void setTmplatId(String tmplatId) {
+    this.tmplatId = tmplatId;
+  }
+
+  public String getUseAt() {
+    return useAt;
+  }
+
+  public void setUseAt(String useAt) {
+    this.useAt = useAt;
+  }
+
+  public static long getSerialversionuid() {
+    return serialVersionUID;
+  }
+	
 }

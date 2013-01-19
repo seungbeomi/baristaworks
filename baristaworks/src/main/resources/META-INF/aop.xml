@@ -9,6 +9,8 @@
 	<aspects>
 		<aspect name="org.springframework.beans.factory.aspectj.AnnotationBeanConfigurerAspect" />
 		<aspect name="org.springframework.transaction.aspectj.AnnotationTransactionAspect" />
+		<aspect name="kr.co.baristaworks.fw.aop.SystemArchitectureAspect" />
+		<aspect name="kr.co.baristaworks.fw.aop.SystemLoggingAspect" />
 	</aspects>
 
 </aspectj> 

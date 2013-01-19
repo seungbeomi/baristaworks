@@ -1,8 +1,7 @@
 package kr.co.baristaworks.fw.dao;
 
-import lombok.Data;
 
-@Data
+//@Data
 public class SqlHolder {
 
   /**
@@ -25,6 +24,22 @@ public class SqlHolder {
    */
   public SqlHolder(String sqlId, Object param) {
     this.sqlId = sqlId;
+    this.param = param;
+  }
+
+  public String getSqlId() {
+    return sqlId;
+  }
+
+  public void setSqlId(String sqlId) {
+    this.sqlId = sqlId;
+  }
+
+  public Object getParam() {
+    return param;
+  }
+
+  public void setParam(Object param) {
     this.param = param;
   }
   
