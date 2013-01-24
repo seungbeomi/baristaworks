@@ -14,9 +14,10 @@
 
 	<!-- System Logging Aspect -->
 	<bean id="systemLogging" class="kr.co.baristaworks.fw.aop.SystemLoggingAspect" />
-	<!-- System Architecture Aspect 
-	--> 
+	<!-- System Architecture Aspect --> 
 	<bean id="systemArchitecture" class="kr.co.baristaworks.fw.aop.SystemArchitectureAspect" />
+	<!-- 컨트롤러에서 예외를 던지는 Aspect -->
+	<bean id="throwException" class="kr.co.baristaworks.fw.aop.ThrowExceptionAspect" />
 
 	<aop:config>
 		<aop:aspect id="systemLoggingAspect" ref="systemLogging">

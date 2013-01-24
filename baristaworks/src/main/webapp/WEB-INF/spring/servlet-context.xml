@@ -118,6 +118,9 @@
 		<aop:aspect id="systemLoggingAspect" ref="systemLogging">
 			<aop:around pointcut="execution(public * kr.co.baristaworks..*Controller.*(..))" method="loggingController" />
 		</aop:aspect>
+		<aop:aspect id="throwExceptionAspect" ref="throwException">
+			<aop:after-throwing pointcut="execution(public * kr.co.baristaworks..*Controller.*(..))" method="throwException" throwing="ex"/>
+		</aop:aspect>
 	</aop:config>
 	
 </beans>

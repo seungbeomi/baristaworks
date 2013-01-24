@@ -38,83 +38,66 @@ public class SystemArchitectureAspect {
     throw new RuntimeException("Dao can't call Service's method.");
   }
   
+/*
 //===== basics =====
 // TODO : ROLE, LOGGER와 같은 변수 제외시켜야 함.
 @Pointcut("!(execution(* *(..)) || withincode(* *(..)) || withincode(*.new(..)))")
 public void clazz(){
 }
-
 // ===== package =====
 @Pointcut("within(com.sds.emp..web..*)")
 public void inWebPkg() {
 }
-
 @Pointcut("within(com.sds.emp..services.*)")
 public void inInterfacePkg() {
 }
-
 @Pointcut("within(com.sds.emp..services.impl..*)")
 public void inImplementationPkg() {
 }
-
 @Pointcut("within(com.sds.emp..services.vo..*)")
 public void inVOPkg() {
 }
-
 @Pointcut("within(integration..* || unit..*)")
 public void inTestPkg() {
 }
-
 // ===== module names =====
 @Pointcut("within(com.sds.emp..web..*Action)")
 public void actionName() {
 }
-
 @Pointcut("within(com.sds.emp..web..*Form)")
 public void formName() {
 }
-
 @Pointcut("within(com.sds.emp..services.I*)")
 public void interfaceName() {
 }
-
 @Pointcut("within(com.sds.emp..services.vo.*VO)")
 public void voName() {
 }
-
 @Pointcut("within(com.sds.emp..services.impl..*Impl)")
 public void implementationName() {
 }
-
 @Pointcut("within(com.sds.emp..services.impl..*DAO)")
 public void daoName() {
 }
-
 // ===== calls to modules =====
 @Pointcut("call(* com.sds.emp..web.*Action.*(..)) && call(* com.sds.emp..web.*Form.*(..))")
 public void callToWeb() {
 } 
-
 @Pointcut("call(* com.sds.emp..services.impl.*DAO.*(..))")
 public void callToDAO() {
 }
-
 @Pointcut("call(com.sds.emp..services.impl.*DAO.new(..))")
 public void callToDAOConstructor() {
 }
-
 @Pointcut("call(* com.sds.emp..services.impl.*Impl.*(..))")
 public void callToImplementation() {
 }
-
 @Pointcut("call(com.sds.emp..services.impl.*Impl.new(..))")
 public void callToImplConstructor() {
 } 
-
 @Pointcut("call(* java.sql.Connection.*(..))")
 public void callToConnection() {
   }
-/*
 // ===== Naming Rule =====
 // TODO : 클래스와 인터페이스 구분해줘야 함. 
 @DeclareWarning ("inInterfacePkg() && !(inImplementationPkg() || inVOPkg()) && clazz() && !interfaceName()")
