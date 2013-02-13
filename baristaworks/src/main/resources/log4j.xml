@@ -41,8 +41,6 @@
 	<logger name="org.hibernate">
 		<level value="warn" />
 	</logger>
-	<!-- <logger name="org.hibernate.SQL"> <level value="debug" /> </logger> <logger name="org.hibernate.type"> <level value="debug" /> </logger> <logger name="org.hibernate.connection.DriverManagerConnectionProvider"> 
-		<level value="debug" /> </logger> -->
 
 	<!-- JDBC[S] -->
 	<logger name="java.sql.Connection">

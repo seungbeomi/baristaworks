@@ -46,7 +46,7 @@
 	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver"
 		p:cookieName="locale" p:defaultLocale="ko" />
 		
-		
+	<!--  
 	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
 		<property name="customArgumentResolvers">
 			<list>
@@ -54,13 +54,14 @@
 			</list>
 		</property>
 	</bean>
+	-->
 
 	<!-- This bean resolves specific types of exceptions to corresponding logical 
 		- view names for error views. The default behaviour of DispatcherServlet 
 		- is to propagate all exceptions to the servlet container: this will happen 
 		- here with all other types of exceptions. -->
-	<bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver"
-		p:defaultErrorView="uncaughtException">
+	<bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<property name="defaultErrorView" value="uncaughtException"/>
 		<property name="exceptionMappings">
 			<props>
 				<prop key=".DataAccessException">dataAccessFailure</prop>

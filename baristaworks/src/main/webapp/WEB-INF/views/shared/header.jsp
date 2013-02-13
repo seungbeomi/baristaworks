@@ -1,4 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/shared/taglibs.jsp"%>
 
 <a class="brand" href="<c:url value='/' />"><spring:message code="application_name" /></a>
