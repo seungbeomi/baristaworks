@@ -1,4 +1,4 @@
-package kr.co.baristaworks.fw.dao.impl;
+package kr.co.baristaworks.fw.dao;
 
 import java.sql.Connection;
 import java.util.List;
@@ -6,9 +6,6 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
-import kr.co.baristaworks.fw.dao.AbstractQueryDao;
-import kr.co.baristaworks.fw.dao.QueryDao;
-import kr.co.baristaworks.fw.dao.SqlHolder;
 
 import org.apache.ibatis.executor.BatchResult;
 import org.apache.ibatis.session.ResultHandler;

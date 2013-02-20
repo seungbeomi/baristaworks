@@ -1,4 +1,4 @@
-package kr.co.baristaworks.fw.dao.impl;
+package kr.co.baristaworks.fw.dao;
 
 import static org.junit.Assert.assertEquals;
 

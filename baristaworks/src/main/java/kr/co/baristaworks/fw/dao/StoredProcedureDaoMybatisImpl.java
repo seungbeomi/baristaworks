@@ -1,8 +1,7 @@
-package kr.co.baristaworks.fw.dao.impl;
+package kr.co.baristaworks.fw.dao;
 
 import javax.annotation.Resource;
 
-import kr.co.baristaworks.fw.dao.StoredProcedureDao;
 
 import org.apache.ibatis.session.SqlSession;
 
