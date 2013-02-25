@@ -4,7 +4,6 @@ import java.util.List;
 
 import kr.co.baristaworks.domain.BbsManage;
 import kr.co.baristaworks.domain.BbsManageVO;
-import kr.co.baristaworks.fw.dao.QueryDao;
 import kr.co.baristaworks.fw.service.CommonService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,17 +13,15 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @Transactional(readOnly = true)
 public class BbsManageService {
-  /*
+  
   @Autowired
   private BbsManageMapper bbsManageMapper;
-   */
   
   @Autowired
   private CommonService commsonService;
-  
+  /*
   @Autowired
   private QueryDao queryDao;
-  
   public List<BbsManageVO> selectBbsManageList() {
     return queryDao.selectList("BbsManageMapper.selectBbsManageList");
   }
@@ -40,7 +37,7 @@ public class BbsManageService {
   public int updateBbsManage(BbsManage bbsManage) {
     return queryDao.update("BbsManageMapper.updateBbsManage", bbsManage);
   }
-  /*
+   */
   public List<BbsManageVO> selectBbsManageList() {
     return bbsManageMapper.selectBbsManageList();
   }
@@ -54,6 +51,8 @@ public class BbsManageService {
   public BbsManage selectBbsManage(String bbsId) {
     return bbsManageMapper.selectBbsManage(bbsId);
   }
-  */
+  public int updateBbsManage(BbsManage bbsManage) {
+  	return bbsManageMapper.updateBbsManage(bbsManage);
+  }
   
 }

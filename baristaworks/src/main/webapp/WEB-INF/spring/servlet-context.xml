@@ -117,10 +117,12 @@
 	<!-- AOP를 통한 Controller 로그 남기기 -->
 	<aop:config>
 		<aop:aspect id="systemLoggingAspect" ref="systemLogging">
-			<aop:around pointcut="execution(public * kr.co.baristaworks..*Controller.*(..))" method="loggingController" />
+			<!-- <aop:around pointcut="execution(public * kr.co.baristaworks..*Controller.*(..))" method="loggingController" /> -->
+			<aop:around pointcut="bean(*Controller)" method="loggingController" />
 		</aop:aspect>
 		<aop:aspect id="throwExceptionAspect" ref="throwException">
-			<aop:after-throwing pointcut="execution(public * kr.co.baristaworks..*Controller.*(..))" method="throwException" throwing="ex"/>
+			<!-- <aop:after-throwing pointcut="execution(public * kr.co.baristaworks..*Controller.*(..))" method="throwException" throwing="ex"/> -->
+			<aop:after-throwing pointcut="bean(*Controller)" method="throwException" throwing="ex"/>
 		</aop:aspect>
 	</aop:config>
 	

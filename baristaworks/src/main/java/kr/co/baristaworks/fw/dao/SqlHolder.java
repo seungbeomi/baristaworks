@@ -1,7 +1,5 @@
 package kr.co.baristaworks.fw.dao;
 
-
-//@Data
 public class SqlHolder {
 
   /**

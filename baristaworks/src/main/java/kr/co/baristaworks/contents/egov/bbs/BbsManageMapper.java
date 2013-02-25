@@ -12,5 +12,7 @@ public interface BbsManageMapper {
   int insertBbsManage(BbsManage bbsManage);
 
   BbsManage selectBbsManage(String bbsId);
+
+	int updateBbsManage(BbsManage bbsManage);
   
 }

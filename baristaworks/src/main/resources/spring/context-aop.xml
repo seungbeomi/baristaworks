@@ -22,20 +22,13 @@
 	<aop:config>
 		<aop:aspect id="systemLoggingAspect" ref="systemLogging">
 			<!-- <aop:around pointcut="execution(public * kr.co.baristaworks..*Controller.*(..))" method="loggingController" /> -->
-			<aop:around pointcut="execution(public * kr.co.baristaworks..*Service.*(..))" method="loggingService" />
+			<!-- 
+			<aop:around pointcut="execution(public * kr.co.baristaworks..*Service.*(..))" method="loggingService" /> 
 			<aop:around pointcut="execution(public * kr.co.baristaworks..*Dao*.*(..))" method="loggingDao" />
+			-->
+			<aop:around pointcut="bean(*Service)" method="loggingService" />
+			<aop:around pointcut="bean(*Dao)" method="loggingDao" />
 		</aop:aspect>
-		
-		<!--  
-		<aop:pointcut id="controllerPointcut" expression="execution(public * kr.co.baristaworks..*Controller.*(..))" />
-		<aop:pointcut id="servicePointcut" expression="execution(public * kr.co.baristaworks..*Service.*(..))" />
-		<aop:pointcut id="daoPointcut" expression="execution(public * kr.co.baristaworks..*Dao.*(..))" />
-		
-		<aop:aspect id="systemArchitectureAspect" ref="systemArchitecture">
-			<aop:before pointcut="execution(public * kr.co.baristaworks..*Dao*.*(..)) &amp; call(* kr.co.baristaworks..*Service.*(..))" method="checkDao"/>
-		</aop:aspect>
-		-->
-		
 	</aop:config>
 
 </beans>
